@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "InnoPlayer_iOS_SDK"
-  spec.version      = "0.3.0"
+  spec.version      = "0.3.1"
   spec.summary      = "Apps that you build with our SDK work seamlessly with our video platform hosting and streaming, and ads products."
 
   # This description is used to generate tags and improve search results.
@@ -63,7 +63,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.platform     = :ios
-  spec.platform     = :ios, "12.0"
+  spec.platform     = :ios, "11.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -78,7 +78,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/mncinnovation/innoplayer-ios.git", :tag => "0.3.0"  }
+  spec.source       = { :git => "https://github.com/mncinnovation/innoplayer-ios.git", :tag => "0.3.1"  }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
