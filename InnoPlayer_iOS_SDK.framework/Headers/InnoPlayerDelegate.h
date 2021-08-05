@@ -14,6 +14,8 @@
  */
 @protocol InnoPlayerDelegate
 
+@optional
+
 /**
  * Called when the InnoPlayer is success.
  */
@@ -34,6 +36,10 @@
  */
 - (void)onInnoPlayerGetCurrentDuration:(int)duration;
 
+/* ========================================*/
+/** @name DRM
+ */
+
 /**
  * Called when the InnoPlayer need content id for DRM content
  */
@@ -48,6 +54,44 @@
  * Called when the InnoPlayer need content key for DRM content
  */
 - (void)onInnoFetchContentKeyWithRequest:(NSData *)requestSPC;
+
+/* ========================================*/
+/** @name Playback
+ */
+
+/**
+ * Called when the InnoPlayer enters the 'playing' state.
+ */
+- (void)onPlay;
+
+/**
+ * Called when the InnoPlayer enters the 'paused' state.
+ */
+- (void)onPause;
+
+/**
+ * Called when the InnoPlayer enters the 'idle' state.
+ */
+- (void)onIdle;
+
+/**
+ * Called when the InnoPlayer is ready for playback.
+ */
+- (void)onReady;
+
+/**
+ * Called when the InnoPlayer toggles to/from mute.
+ */
+- (void)onMute:(BOOL)state;
+
+/* ========================================*/
+/** @name Resize
+ */
+
+/**
+ * Called when the InnoPlayer toggles to/from fullscreen.
+ */
+- (void)onFullscreen:(BOOL)state;
 
 @end
 
