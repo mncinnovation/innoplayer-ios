@@ -10,8 +10,10 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "InnoPlayerDelegate.h"
+#import "InnoDrmDataSource.h"
 #import "InnoConfig.h"
-#import <InnoPlayer_iOS_SDK/InnoCaption.h>
+#import "InnoCaption.h"
+#import "InnoVideoQuality.h"
 
 /**
  * A class that encapsulates InnoPlayer and provides control over the playback as well as holds the state of the player and notifies about status updates
@@ -33,6 +35,13 @@
 @property (nonatomic, nullable, weak) id<InnoPlayerDelegate> delegate;
 
 /**
+ * The data source provides the InnoPlayerController object with the data needed to reproduce encrypted content.
+ *
+ * @note The drmDataSource must adopt the InnoDrmDataSource protocol. The drmDataSource is not retained.
+ */
+@property (nonatomic, nullable, weak) id<InnoDrmDataSource> drmDataSource;
+
+/**
  * indicates whether or not audio output of the player is muted. Only affects audio muting for the player instance and not for the device.
  */
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
@@ -43,14 +52,19 @@
 @property (nonatomic, assign) CGFloat volume;
 
 /**
- * indicates the current resolution of the player
+ * Indicates the current resolution of the player
  */
 @property (nonatomic, assign, readonly) CGSize currentResolution;
 
 /**
- * indicates player screen is fullscreen or not.
+ * Indicates player screen is fullscreen or not.
  */
 @property (nonatomic, assign) BOOL fullscreen;
+
+/**
+ * Enable the built-in controls by setting them true, disable the controls by setting them false.
+ */
+@property (nonatomic, assign) BOOL controls;
 
 /**
  * indicates the current subtitle option of the player
@@ -71,6 +85,20 @@
  * @note index 0 stands for no caption.
  */
 @property (nonatomic, assign, unsafe_unretained, readwrite) NSUInteger currentCaption;
+
+/**
+ * List of quality levels available for the current media expressed as an array of dictionaries.
+ */
+@property (nonatomic, copy, readonly, nonnull) NSArray <InnoVideoQuality *> * qualityLevels;
+
+/**
+ * The index of the object in quality levels list currently used by the player.
+ *
+ * @note When playing an adaptive stream, an index of 0 will always be Auto.
+ */
+@property (nonatomic, assign, unsafe_unretained, readwrite) NSUInteger currentQuality;
+
+@property (nonatomic, retain, nullable) UIViewController * viewController;
 
 /**
  * Sets the Player Key programmatically instead of having to type it into the application’s info.plist. We recommend setting the key in the AppDelegate’s application:didFinishLaunchingWithOptions: method.

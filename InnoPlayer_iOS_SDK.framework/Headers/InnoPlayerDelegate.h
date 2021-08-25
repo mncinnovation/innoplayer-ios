@@ -16,45 +16,6 @@
 
 @optional
 
-/**
- * Called when the InnoPlayer is success.
- */
-- (void)onInnoPlayerSuccess:(NSString *)message;
-
-/**
- * Called when the InnoPlayer is get error.
- */
-- (void)onInnoPlayerError:(InnoError *)error;
-
-/**
- * Called when the InnoPlayer get total duration of video
- */
-- (void)onInnoPlayerGetTotalDuration:(int)duration;
-
-/**
- * Called when the InnoPlayer get current duration of played  video
- */
-- (void)onInnoPlayerGetCurrentDuration:(int)duration;
-
-/* ========================================*/
-/** @name DRM
- */
-
-/**
- * Called when the InnoPlayer need content id for DRM content
- */
-- (void)onInnoFetchContentIdForRequest:(NSURL *)requestURL;
-
-/**
- * Called when the InnoPlayer need certificate for DRM content
- */
-- (void)onInnoFetchCertificateForRequest:(NSURL *)requestURL;
-
-/**
- * Called when the InnoPlayer need content key for DRM content
- */
-- (void)onInnoFetchContentKeyWithRequest:(NSData *)requestSPC;
-
 /* ========================================*/
 /** @name Playback
  */
@@ -92,6 +53,39 @@
  * Called when the InnoPlayer toggles to/from fullscreen.
  */
 - (void)onFullscreen:(BOOL)state;
+
+/* ========================================*/
+/** @name Controls
+ */
+
+/**
+ Fired when controls are enabled or disabled by setting the JWPlayerController controls property to a boolean.
+ */
+- (void)onControls:(BOOL)state;
+
+/* ========================================*/
+/** @name Error
+ */
+
+/**
+ * Called when the InnoPlayer is get error.
+ */
+- (void)onError:(InnoError *)error;
+
+/* ========================================*/
+/** @name Playback Position and Duration
+ */
+
+/**
+ * Called when the InnoPlayer get total duration of video
+ */
+- (void)onDuration:(int)duration;
+
+/**
+ * Called when the InnoPlayer get current position of played video
+ */
+- (void)onTime:(int)position;
+
 
 @end
 
